@@ -16,6 +16,12 @@ public class testing {
         System.out.println(kb.indexOf(c));
     }
     public static void main(String[] args){
-        test();
+        char ch = (char)65;
+        
+        for (int i=1; i<=10; i++) {
+            System.out.println((char)(i+64));
+        }
+        
+        
     }
 }

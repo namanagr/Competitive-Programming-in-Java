@@ -24,7 +24,7 @@ public class l104_max_depth_binary_tree {
         if (root == null)
             return 0;
         else
-            return Math.max(maxDepth(root.left), maxDepth(root.right) + 1);
+            return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
     
     public static void main (String[] args){

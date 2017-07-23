@@ -9,16 +9,7 @@ package Tree;
  *
  * @author namanagr
  */
-public class p15_no_of_full_nodes_recursion {
-   static int no_of_fullnodes(TreeNode root) {
-        if (root == null)
-            return 0;
-        int x = 0;
-        if (root.left != null && root.right != null)
-            x = 1;
-        return no_of_fullnodes(root.left) + no_of_fullnodes(root.right) + x;
-    }
-    
+public class p17_structurally_identical_bt {
     public static void main(String[] args){
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
@@ -26,7 +17,7 @@ public class p15_no_of_full_nodes_recursion {
         root.left.left = new TreeNode(4);
         root.left.right = new TreeNode(5);
         root.right.left = new TreeNode(6);
-        root.right.right = new TreeNode(7);
-        System.out.println(no_of_fullnodes(root));
-    }  
+        //root.right.right = new TreeNode(7);
+        System.out.println((root));
+    }
 }

@@ -7,19 +7,31 @@ package Tree;
 
 /**
  *
- * @author naman.agrawal
+ * @author namanagr
  */
-public class p3_search_element_in_binary_tree {
+
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class p7_size_of_bt_iterative {
     
-    static int searchTree(TreeNode root, int search){
+    static int bt_size(TreeNode root) {
         if (root == null)
             return 0;
-        if (root.val == search)
-            return 1;
-        else
-            return searchTree(root.left, search) | searchTree(root.right, search);
+        Queue<TreeNode> q = new LinkedList();
+        q.add(root);
+        int size = 0;
+        while (!q.isEmpty()) {
+            TreeNode front = q.remove();
+            size++;
+            if (front.left != null)
+                q.add(front.left);
+            if (front.right != null)
+                q.add(front.right);
+        }
+        return size;
     }
-        
+    
     public static void main(String[] args){
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
@@ -28,10 +40,6 @@ public class p3_search_element_in_binary_tree {
         root.left.right = new TreeNode(5);
         root.right.left = new TreeNode(6);
         root.right.right = new TreeNode(7);
-        int search = 4;
-        if (searchTree(root, search) == 1)
-            System.out.println("Number present in the tree");
-        else
-            System.out.println("Number not present in the tree");
+        System.out.println(bt_size(root));
     }
 }

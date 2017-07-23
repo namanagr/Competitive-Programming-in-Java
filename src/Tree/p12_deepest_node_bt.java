@@ -4,22 +4,28 @@
  * and open the template in the editor.
  */
 package Tree;
-
+import java.util.*;
 /**
  *
- * @author naman.agrawal
+ * @author namanagr
  */
-public class p3_search_element_in_binary_tree {
-    
-    static int searchTree(TreeNode root, int search){
+public class p12_deepest_node_bt {
+    static int deepest_node(TreeNode root) {
         if (root == null)
             return 0;
-        if (root.val == search)
-            return 1;
-        else
-            return searchTree(root.left, search) | searchTree(root.right, search);
+        Queue<TreeNode> q = new LinkedList();
+        TreeNode front = null;
+        q.add(root);
+        while (!q.isEmpty()) {
+            front = q.remove();
+            if (front.left != null)
+                q.add(front.left);
+            if (front.right != null)
+                q.add(front.right);
+        }
+        return front.val;
     }
-        
+    
     public static void main(String[] args){
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
@@ -28,10 +34,6 @@ public class p3_search_element_in_binary_tree {
         root.left.right = new TreeNode(5);
         root.right.left = new TreeNode(6);
         root.right.right = new TreeNode(7);
-        int search = 4;
-        if (searchTree(root, search) == 1)
-            System.out.println("Number present in the tree");
-        else
-            System.out.println("Number not present in the tree");
-    }
+        System.out.println(deepest_node(root));
+    } 
 }

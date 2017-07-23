@@ -7,19 +7,16 @@ package Tree;
 
 /**
  *
- * @author naman.agrawal
+ * @author namanagr
  */
-public class p3_search_element_in_binary_tree {
+public class p10_depth_of_bt {
     
-    static int searchTree(TreeNode root, int search){
+    static int bt_depth(TreeNode root) {
         if (root == null)
             return 0;
-        if (root.val == search)
-            return 1;
-        else
-            return searchTree(root.left, search) | searchTree(root.right, search);
+        return Math.max(bt_depth(root.left),bt_depth(root.right)) + 1;
     }
-        
+    
     public static void main(String[] args){
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
@@ -28,10 +25,6 @@ public class p3_search_element_in_binary_tree {
         root.left.right = new TreeNode(5);
         root.right.left = new TreeNode(6);
         root.right.right = new TreeNode(7);
-        int search = 4;
-        if (searchTree(root, search) == 1)
-            System.out.println("Number present in the tree");
-        else
-            System.out.println("Number not present in the tree");
+        System.out.println(bt_depth(root));
     }
 }

@@ -5,19 +5,17 @@
  */
 package Tree;
 
-import jdk.nashorn.internal.parser.TokenType;
-
 /**
  *
- * @author namanagr
+ * @author naman.agrawal
  */
-public class p17_structurally_identical_bt {
+public class p17b_identical_bt {
     
-    static boolean struct_indetical(TreeNode root1, TreeNode root2) {
+    static boolean identical(TreeNode root1, TreeNode root2) {
         if (root1 == null && root2 == null)
             return true;
         else if (root1 != null && root2 != null)
-            return struct_indetical(root1.left, root2.left) & struct_indetical(root1.right, root2.right);
+            return (root1.val == root2.val) & identical(root1.left, root2.left) & identical(root1.right, root2.right);
         else
             return false;
     }
@@ -39,6 +37,7 @@ public class p17_structurally_identical_bt {
         root2.left.right = new TreeNode(5);
         root2.right.left = new TreeNode(6);
         
-        System.out.println(struct_indetical(root,root2));
+        System.out.println(identical(root,root2));
     }
 }
+    
